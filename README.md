@@ -24,7 +24,7 @@ curl -s https://ohmyposh.dev/install.sh | bash -s
 curl --output ~/wbydc.omp.json https://raw.githubusercontent.com/wbydc/posh-theme/main/wbydc.omp.json 
 ```
 
-3. Add to .zsrc
+3. Add to .zshrc
 
 ```shell
 eval "$(oh-my-posh init zsh --config ~/wbydc.omp.json)"

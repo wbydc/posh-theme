@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
   "final_space": true,
   "enable_cursor_positioning": true,
-  "console_title_template": "{{if .SSHSession }}{{ .UserName }}@{{ .HostName }} {{ end }}{{ if .Root }}\uf0e7 {{ end }} {{.PWD}}",
+  "console_title_template": "{{ if .Root }}⚡{{ end }}{{ .UserName }}@{{ .HostName }} {{.PWD}}",
   "blocks": [
     {
       "type": "prompt",
@@ -49,10 +49,13 @@
             "fetch_bare_info": true,
             "fetch_upstream_icon": true
           },
-          "template": "{{ .UpstreamIcon }} {{ .HEAD }} {{if .BranchStatus }}{{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uF044 {{ end }} {{ if and (.Staging.Changed) (.Working.Changed) }} | {{ end }}{{ if .Staging.Changed }} \uF046 {{ end }}",
+          "template": "{{ .UpstreamIcon }} {{ .HEAD }} {{ if .Working.Changed }}\uea7f {{ end }}{{ if .Staging.Changed }}\uf4d0 {{ end }}",
           "foreground": "#fff",
           "type": "git",
-          "style": "plain"
+          "style": "plain",
+          "upstream_icons": {
+            "git.wbydc.io": "\uf0ba0"
+          }
         }
       ]
     },
@@ -107,6 +110,25 @@
           "template": "❯"
         }
       ]
+    }
+  ],
+  "tooltips": [
+    {
+      "type": "git",
+      "tips": [
+        "git",
+        "g"
+      ],
+      "style": "diamond",
+      "foreground": "#193549",
+      "background": "#fffb38",
+      "leading_diamond": "",
+      "trailing_diamond": "",
+      "template": "{{if .BranchStatus }}{{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uF044 {{ .Working.String }}{{ end }}{{ if and (.Staging.Changed) (.Working.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uF046 {{ .Staging.String }}{{ end }}",
+      "properties": {
+        "fetch_status": true,
+        "fetch_upstream_icon": true
+      }
     }
   ],
   "version": 3
