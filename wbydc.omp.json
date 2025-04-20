@@ -1,0 +1,106 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "final_space": true,
+  "enable_cursor_positioning": true,
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "properties": {
+            "windows": "\ue70f"
+          },
+          "template": " {{.Icon}} {{ if .WSL }}WSL{{ end }}",
+          "foreground": "#000000",
+          "background": "#FFD700",
+          "type": "os",
+          "style": "powerline"
+        },
+        {
+          "template": " {{ if .SSHSession }}\ueba9 {{ end }}{{ if .Root }}\uf0e7 {{ end }}{{ .UserName }}@{{ .HostName }} ",
+          "powerline_symbol": "\uE0B0",
+          "foreground": "#000000",
+          "background": "#98C379",
+          "type": "session",
+          "style": "powerline"
+        },
+        {
+          "properties": {
+            "style": "full"
+          },
+          "powerline_symbol": "\uE0B0",
+          "foreground": "#000000",
+          "background": "#34a4ff",
+          "type": "path",
+          "style": "powerline"
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "newline": true,
+      "alignment": "left",
+      "segments": [
+        {
+          "properties": {
+            "fetch_status": true,
+            "fetch_bare_info": true,
+            "fetch_upstream_icon": true
+          },
+          "template": "{{ .UpstreamIcon }} {{ .HEAD }} {{if .BranchStatus }}{{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uF044 {{ end }} {{ if and (.Staging.Changed) (.Working.Changed) }} | {{ end }}{{ if .Staging.Changed }} \uF046 {{ end }}",
+          "foreground": "#fff",
+          "type": "git",
+          "style": "plain"
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "right",
+      "segments": [
+        {
+          "properties": {
+            "display_version": true,
+            "fetch_package_manager": true,
+            "icon": "\ued0d"
+          },
+          "foreground": "#fff",
+          "template": "\ued0d {{.Full}} {{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}",
+          "type": "node",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "display_version": true,
+            "icon": "\ue627"
+          },
+          "foreground": "#fff",
+          "type": "go",
+          "style": "plain"
+        },
+        {
+          "template": " \ue81d {{.Context}}{{if .Namespace}} :: {{.Namespace}}{{end}} ",
+          "foreground": "#fff",
+          "background": "transparent",
+          "type": "kubectl",
+          "style": "plain"
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "newline": true,
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "text",
+          "style": "plain",
+          "foreground": "#FFF",
+          "template": "❯"
+        }
+      ]
+    }
+  ],
+  "version": 3
+}
