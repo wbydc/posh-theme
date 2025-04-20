@@ -1,5 +1,7 @@
 # wbydc posh theme
 
+Theme for [OhMyPosh](https://ohmyposh.dev/)
+
 ## Installation
 
 ### Linux

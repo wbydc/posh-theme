@@ -2,6 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
   "final_space": true,
   "enable_cursor_positioning": true,
+  "console_title_template": "{{if .SSHSession }}{{ .UserName }}@{{ .HostName }} {{ end }}{{ if .Root }}\uf0e7 {{ end }} {{.PWD}}",
   "blocks": [
     {
       "type": "prompt",
@@ -93,6 +94,12 @@
       "newline": true,
       "alignment": "left",
       "segments": [
+        {
+          "type": "status",
+          "style": "plain",
+          "foreground": "#ff4646",
+          "template": "{{ if .Error }}\uf444{{ end }} "
+        },
         {
           "type": "text",
           "style": "plain",
